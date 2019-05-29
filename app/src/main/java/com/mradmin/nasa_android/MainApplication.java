@@ -4,7 +4,6 @@ import android.app.Application;
 
 import java.util.concurrent.TimeUnit;
 
-import io.realm.Realm;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 

@@ -21,7 +21,7 @@ public class ApiService implements IApiService {
 
     public ApiService(OnApiServiceListener listener) {
         this.listener = new WeakReference<>(listener);
-        this.okHttpClient = MainApplication.getOkHttpClient();
+        this.okHttpClient = MainApplication.getInstance().getOkHttpClient();
     }
 
     public ApiService(OkHttpClient okHttpClient, OnApiServiceListener listener) {
