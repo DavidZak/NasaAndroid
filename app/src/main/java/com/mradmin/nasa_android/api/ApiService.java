@@ -46,24 +46,6 @@ public class ApiService implements IApiService {
         return listener;
     }
 
-    private void makeCall(Request request) {
-        getOkHttpClient().newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                //getListener().get().onRequestFail(e);
-            }
-
-            @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) {
-//                if (response.isSuccessful()) {
-//                    getListener().get().onRequestResponse(response);
-//                } else {
-//                    getListener().get().onRequestFail(new IOException(response.message()));
-//                }
-            }
-        });
-    }
-
     @Override
     public void getPhotos(String date){
         Request request = new Request.Builder()
@@ -98,8 +80,6 @@ public class ApiService implements IApiService {
                     } catch (ApiServiceException | JSONException | IOException e) {
                         getListener().get().onRequestFail(e);
                     }
-
-                    //getListener().get().onRequestResponse(response);
                 } else {
                     getListener().get().onRequestFail(new IOException(response.message()));
                 }

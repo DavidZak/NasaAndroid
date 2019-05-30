@@ -61,13 +61,11 @@ public class MainActivity extends AppCompatActivity implements OnApiServiceListe
     @Override
     public void onResponsePhotos(List<Photo> photos) {
         showLoading(false);
-        System.out.println("---------------------- response photos: " + photos);
     }
 
     @Override
     public void onResponseRoverManifestMaxDate(String roverManifestMaxDate) {
         showLoading(false);
-        System.out.println("---------------------- response max date: " + roverManifestMaxDate);
         requestPhotos(roverManifestMaxDate);
     }
 
