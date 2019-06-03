@@ -25,6 +25,8 @@ import okhttp3.Response;
 
 public class ApiService implements IApiService {
 
+    private final static String API_KEY = "acA1JEaKDXUje6qmd6zjsQT6HLf5JBAqsiEf5Rjn";
+
     private OkHttpClient okHttpClient;
     private WeakReference<OnApiServiceListener> listener;
 
@@ -49,7 +51,7 @@ public class ApiService implements IApiService {
     @Override
     public void getPhotos(String date){
         Request request = new Request.Builder()
-                .url(String.format("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=%1$s&api_key=DEMO_KEY", date))
+                .url(String.format("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=%1$s&api_key=" + API_KEY, date))
                 .build();
 
         getOkHttpClient().newCall(request).enqueue(new Callback() {
@@ -90,7 +92,7 @@ public class ApiService implements IApiService {
     @Override
     public void getRoverManifest() {
         Request request = new Request.Builder()
-                .url("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity?api_key=DEMO_KEY")
+                .url("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity?api_key=" + API_KEY)
                 .build();
 
         getOkHttpClient().newCall(request).enqueue(new Callback() {

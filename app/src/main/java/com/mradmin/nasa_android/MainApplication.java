@@ -4,10 +4,14 @@ import android.app.Application;
 
 import java.util.concurrent.TimeUnit;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 
 public class MainApplication extends Application {
+
+    private final static String REALM_ENCRYPTION_KEY = "EPnodN3jo086LA3UeFxZc0YuljyNw1QRBEVTbhSprDDoP6iQPpNbLxlPy6Q989V0";
 
     private OkHttpClient _okHttpClient;
     private static MainApplication _instance;
@@ -31,7 +35,7 @@ public class MainApplication extends Application {
         super.onCreate();
 
         initOkHttp();
-        initRoom();
+        initRealm();
     }
 
     private OkHttpClient initOkHttp() {
@@ -48,7 +52,15 @@ public class MainApplication extends Application {
         return httpClientBuilder.build();
     }
 
-    private void initRoom() {
+    private void initRealm() {
+        Realm.init(this);
+        RealmConfiguration configuration = new RealmConfiguration.Builder()
+                .deleteRealmIfMigrationNeeded()
+                .name("nasa.realm")
+                .encryptionKey(REALM_ENCRYPTION_KEY.getBytes())
+                .build();
 
+        Realm.setDefaultConfiguration(configuration);
     }
+
 }

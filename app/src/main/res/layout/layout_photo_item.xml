@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="wrap_content" >
 
     <ImageView
         android:id="@+id/iv_photo"
@@ -12,10 +12,18 @@
         android:scaleType="centerCrop"/>
 
     <TextView
+        android:id="@+id/tv_photo_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/iv_photo"
-        tools:text="dsfdsafdsafbdsabfvbdsa hfbdsahb fhajdsbf hasdbfjhd saf"
+        android:gravity="end"
+        tools:text="Земная дата: 1999-9-19"
         android:padding="16dp"/>
+
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
 
 </RelativeLayout>

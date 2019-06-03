@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">NasaAndroid</string>
+
+    <string name="photo_toolbar_title">Фото</string>
+
+    <string name="earth_date">Земная дата: %1$s</string>
+
+    <!-- Delete dialog-->
+    <string name="alert_delete_title">Удалить фото?</string>
+    <string name="alert_delete_yes">Да</string>
+    <string name="alert_delete_no">Нет</string>
+
+    <string name="error_saving">Ошибка при сохранении</string>
+    <string name="error_removing">Ошибка при удалении</string>
+
+    <string name="choose_load_count">Выберите количество загружаемых фотографий</string>
+    <string name="close">Закрыть</string>
+
+    <string-array name="load_count_array">
+        <item>5</item>
+        <item>10</item>
+        <item>20 (По умолчанию)</item>
+        <item>30</item>
+        <item>40</item>
+    </string-array>
 </resources>

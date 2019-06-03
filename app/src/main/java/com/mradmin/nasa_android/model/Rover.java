@@ -5,7 +5,13 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Rover {
+import io.realm.RealmList;
+import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.RealmClass;
+
+@RealmClass
+public class Rover implements BaseModel {
+    @PrimaryKey
     @SerializedName("id")
     private int id;
     @SerializedName("name")
@@ -23,12 +29,12 @@ public class Rover {
     @SerializedName("totalPhotos")
     private long totalPhotos;
     @SerializedName("cameras")
-    private List<RoverCamera> cameras = new ArrayList<>();
+    private RealmList<RoverCamera> cameras = new RealmList<>();
 
     public Rover() {
     }
 
-    public Rover(int id, String name, String landingDate, String launchDate, String status, int maxSol, String maxDate, long totalPhotos, List<RoverCamera> cameras) {
+    public Rover(int id, String name, String landingDate, String launchDate, String status, int maxSol, String maxDate, long totalPhotos, RealmList<RoverCamera> cameras) {
         this.id = id;
         this.name = name;
         this.landingDate = landingDate;
@@ -40,8 +46,14 @@ public class Rover {
         this.cameras = cameras;
     }
 
-    public int getId() {
-        return id;
+    @Override
+    public String getId() {
+        return String.valueOf(id);
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id = Integer.parseInt(id);
     }
 
     public void setId(int id) {
@@ -104,11 +116,11 @@ public class Rover {
         this.totalPhotos = totalPhotos;
     }
 
-    public List<RoverCamera> getCameras() {
+    public RealmList<RoverCamera> getCameras() {
         return cameras;
     }
 
-    public void setCameras(List<RoverCamera> cameras) {
+    public void setCameras(RealmList<RoverCamera> cameras) {
         this.cameras = cameras;
     }
 }

@@ -2,8 +2,12 @@ package com.mradmin.nasa_android.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class RoverCamera {
+import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.RealmClass;
 
+@RealmClass
+public class RoverCamera implements BaseModel {
+    @PrimaryKey
     private int id;
     private String name;
     @SerializedName("rover_id")
@@ -21,12 +25,14 @@ public class RoverCamera {
         this.fulName = fulName;
     }
 
-    public int getId() {
-        return id;
+    @Override
+    public String getId() {
+        return String.valueOf(id);
     }
 
-    public void setId(int id) {
-        this.id = id;
+    @Override
+    public void setId(String id) {
+        this.id = Integer.parseInt(id);
     }
 
     public int getRoverId() {
